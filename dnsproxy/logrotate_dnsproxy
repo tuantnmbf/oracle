@@ -1,0 +1,17 @@
+/etc/logrotate.d/dnsproxy 
+/var/log/dnsproxy/dnsproxy.log {
+    daily
+    size 50M
+    rotate 3
+    missingok
+    notifempty
+    nocompress
+    nocreate
+    dateext
+    dateformat -%Y%m%d
+    extension .log
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s SIGUSR1 dnsproxy.service
+    endscript
+}
