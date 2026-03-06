@@ -1,0 +1,38 @@
+# /etc/systemd/system/dnsproxy.service
+[Unit]
+Description=DNS-over-QUIC/TLS Proxy (dnsproxy)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/dnsproxy \
+  --listen=127.0.0.1 \
+  --port=53 \
+  --upstream=quic://dns.adguard-dns.com \
+  --upstream=quic://x-hagezi-ultimate.freedns.controld.com \
+  --upstream=quic://p2.freedns.controld.com \
+  --upstream=tls://han-1.edge.nextdns.io \
+  --upstream=tls://hcm-1.edge.nextdns.io \
+  --timeout=4s \
+  --bootstrap=1.1.1.1 \
+  --bootstrap=8.8.8.8 \
+  --bootstrap=9.9.9.9 \
+  --upstream-mode=parallel \
+  --cache \
+  --cache-size=1048576 \
+  --cache-min-ttl=180 \
+  --cache-max-ttl=86400 \
+  --fallback=https://cloudflare-dns.com/dns-query \
+  --fallback=https://dns.google/dns-query \
+  -v
+
+# Ghi đè toàn bộ Standard Output và Standard Error vào file log
+StandardOutput=append:/var/log/dnsproxy/dnsproxy.log
+StandardError=append:/var/log/dnsproxy/dnsproxy.log
+
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
