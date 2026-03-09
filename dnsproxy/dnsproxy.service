@@ -11,6 +11,7 @@ ExecStart=/usr/local/bin/dnsproxy \
   --port=53 \
   --upstream=quic://dns.adguard-dns.com \
   --upstream=quic://x-hagezi-ultimate.freedns.controld.com \
+  --upstream=quic://p2.freedns.controld.com \  
   --upstream=https://dns.adguard-dns.com/dns-query \
   --upstream=https://freedns.controld.com/x-hagezi-ultimate \
   --upstream=tls://han-1.edge.nextdns.io \
