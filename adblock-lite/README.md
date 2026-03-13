@@ -1,4 +1,4 @@
-# 🛡️ Adblock-Lite: Hệ Thống Chặn DNS Nhẹ Trên Router OpenWrt
+# 🛡️ Adblock-Lite: Hệ Thống Chặn DNS Siêu Nhẹ Trên Router OpenWrt
 
 Adblock-Lite là một giải pháp DNS blocking mạnh mẽ nhưng tiết kiệm tài nguyên, được thiết kế đặc biệt cho các thiết bị OpenWrt với bộ nhớ hạn chế. Hệ thống sử dụng danh sách chặn từ HaGeZi để ngăn chặn quảng cáo, malware, phishing và các nội dung không mong muốn trên toàn bộ mạng.
 
